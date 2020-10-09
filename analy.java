@@ -54,6 +54,7 @@ public class analy {
         return false;
     }
     public static void match(String tmps){
+        if(tmps.length()==0) return;
         if(isInt(tmps)) print(tmps,1);
         else if(tmps.equals("BEGIN")) print(tmps,2);
         else if(tmps.equals("END")) print(tmps,3);
@@ -68,10 +69,10 @@ public class analy {
         else if(tmps.equals(")")) print(tmps,12);
         else if(tmps.equals(":=")) print(tmps,13);
         else print(tmps,0);
-        //else System.out.println("Unknown");
+        return;
     }
     public static void main(String[] args){
-        File file=new File("in.txt");
+        File file=new File($input);
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
