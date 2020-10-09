@@ -72,7 +72,7 @@ public class analy {
         return;
     }
     public static void main(String[] args){
-        File file=new File($input);
+        File file=new File("$input");
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
