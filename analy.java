@@ -79,7 +79,7 @@ public class analy {
     public static void main(String[] args){
         String p1="in.txt";
         String p2="/tests/1.in";
-        File file=new File($input);
+        File file=new File("$input");
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
