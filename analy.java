@@ -28,6 +28,7 @@ public class analy {
         else if(type==11) anss="LParenthesis";
         else if(type==12) anss="RParenthesis";
         else if(type==13) anss="Assign";
+        else if(type==14) anss="For";
         System.out.println(anss);
         return;
     }
@@ -36,7 +37,7 @@ public class analy {
         boolean flag=false;
         String before="";
         String after="";
-        String[] tb={"BEGIN","END","IF","ELSE","THEN","+","*",":=",":",",","(",")"};
+        String[] tb={"FOR","BEGIN","END","IF","ELSE","THEN","+","*",":=",":",",","(",")"};
         int l2=tb.length;
         int i;
         for (i=0;i<l2;i++){
@@ -69,6 +70,7 @@ public class analy {
         else if(tmps.equals("(")) print(tmps,11);
         else if(tmps.equals(")")) print(tmps,12);
         else if(tmps.equals(":=")) print(tmps,13);
+        else if(tmps.equals("FOR")) print(tmps,14);
         else print(tmps,0);
         return;
     }
