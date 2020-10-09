@@ -7,6 +7,7 @@ public class analy {
         else return false;
     }
     public static boolean isInt(String s){
+        if(s.length()==0) return false;
         for (char c:s.toCharArray()) {
             if(!isDigital(c)) return false;
         }
@@ -15,7 +16,18 @@ public class analy {
     public static void print(String s,int type){
         String anss="";
         if(type==0) anss="Ident("+s+")";
-        else if(type==1) anss="Int("+s+")";
+        else if(type==1){
+            if(s.length()==1);
+            else {
+                int pos=-1;
+                for(int i=0;i<s.length();i++){
+                    if(s.toCharArray()[i]=='0') pos=i;
+                    else break;
+                }
+                s=s.substring(pos+1);
+            }
+            anss="Int("+s+")";
+        }
         else if(type==2) anss="Begin";
         else if(type==3) anss="End";
         else if(type==4) anss="If";
@@ -80,8 +92,8 @@ public class analy {
     }
     public static void main(String[] args){
         String p1="in.txt";
-        String p2="/tests/1.in";
-        File file=new File(args[0]);
+        //String p2=args[0];
+        File file=new File(p1);
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
@@ -92,10 +104,9 @@ public class analy {
             while((tmp=r.read())!=-1){
                 char c=(char) tmp;
                 if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')'){
-                    if(isDigital(ls) && !isDigital(c)){
-                        if(isInt(tmps)) print(tmps,1);
-                        else print(tmps,0);
-                        tmps="";
+                    if(isInt(tmps) && !isDigital(c)){
+                        print(tmps,1);
+                        tmps=""+c;
                     }
                     tmps+=c;
                     if(c==':'){
@@ -132,10 +143,17 @@ public class analy {
                     tmps="";
                 }
                 else{
+                    //System.out.println(tmps);
+                    match(tmps);
+                    tmps="";
                     flag=false;
                     break;
                 }
                 ls=c;
+            }
+            if(!tmps.equals("") && !tmps.equals(":")){
+                flag=true;
+                match(tmps);
             }
             if(!flag) System.out.println("Unknown");
         }catch (Exception e) {
