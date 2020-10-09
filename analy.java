@@ -72,7 +72,9 @@ public class analy {
         return;
     }
     public static void main(String[] args){
-        File file=new File("/tests/1.in");
+        String p1="in.txt";
+        String p2="/tests/1.in";
+        File file=new File(p2);
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
@@ -157,7 +159,7 @@ public class analy {
                     flag=check(tmps);
                     if(flag) tmps="";
                 }
-                else if(c==' '){
+                else if(c==' ' || c=='\n' || c=='\r'){
                     match(tmps);
                     tmps="";
                 }
