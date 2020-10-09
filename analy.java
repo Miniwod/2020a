@@ -149,7 +149,7 @@ public class analy {
 //            }
             while((tmp=r.read())!=-1){
                 char c=(char) tmp;
-                if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')'){
+                if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')' || c=='='){
                     if(isDigital(ls) && !isDigital(c)){
                         if(isInt(tmps)) print(tmps,1);
                         else print(tmps,0);
