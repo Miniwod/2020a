@@ -92,8 +92,8 @@ public class analy {
     }
     public static void main(String[] args){
         String p1="in.txt";
-        //String p2=args[0];
-        File file=new File(p1);
+        String p2=args[0];
+        File file=new File(p2);
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
