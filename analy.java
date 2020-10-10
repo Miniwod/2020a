@@ -92,8 +92,8 @@ public class analy {
     }
     public static void main(String[] args){
         String p1="in.txt";
-        String p2=args[0];
-        File file=new File(p2);
+        //String p2=args[0];
+        File file=new File(p1);
         Reader r=null;
         try {
             r=new InputStreamReader(new FileInputStream(file));
@@ -101,6 +101,7 @@ public class analy {
             String tmps="";
             char ls=0;
             boolean flag=true;
+            boolean nflag=true;
             while((tmp=r.read())!=-1){
                 char c=(char) tmp;
                 if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')'){
@@ -108,13 +109,13 @@ public class analy {
                         print(tmps,1);
                         tmps=""+c;
                     }
+                    //System.out.println("here1"+flag);
                     tmps+=c;
                     if(c==':'){
                         if((tmp=r.read())!=-1){
                             next=(char) tmp;
                             if(next=='='){
                                 tmps+=next;
-                                //System.out.println(tmps);
                                 check(tmps);
                                 tmps="";
                             }
@@ -134,16 +135,16 @@ public class analy {
                         }
                     }
                     else {
-                        flag=check(tmps);
-                        if(flag) tmps="";
+                        nflag=check(tmps);
+                        if(nflag) tmps="";
                     }
+                    //System.out.println("here2"+flag);
                 }
                 else if(c==' ' || c=='\n' || c=='\r'){
                     match(tmps);
                     tmps="";
                 }
                 else{
-                    //System.out.println(tmps);
                     match(tmps);
                     tmps="";
                     flag=false;
