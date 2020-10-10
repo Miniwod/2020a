@@ -24,6 +24,7 @@ public class analy {
                     if(s.toCharArray()[i]=='0') pos=i;
                     else break;
                 }
+                if(pos==s.length()-1) pos--;
                 s=s.substring(pos+1);
             }
             anss="Int("+s+")";
@@ -95,69 +96,79 @@ public class analy {
         String p2=args[0];
         File file=new File(p2);
         Reader r=null;
+//        try {
+//            r=new InputStreamReader(new FileInputStream(file));
+//            int tmp;
+//            String tmps="";
+//            char ls=0;
+//            boolean flag=true;
+//            boolean nflag=true;
+//            while((tmp=r.read())!=-1){
+//                char c=(char) tmp;
+//                if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')'){
+//                    if(isInt(tmps) && !isDigital(c)){
+//                        print(tmps,1);
+//                        tmps=""+c;
+//                    }
+//                    //System.out.println("here1"+flag);
+//                    tmps+=c;
+//                    if(c==':'){
+//                        if((tmp=r.read())!=-1){
+//                            next=(char) tmp;
+//                            if(next=='='){
+//                                tmps+=next;
+//                                check(tmps);
+//                                tmps="";
+//                            }
+//                            else {
+//                                check(tmps);
+//                                if(ckvalid(next)) tmps=""+next;
+//                                else if(next==' ' || next=='\n' || next=='\r') tmps="";
+//                                else{
+//                                    flag=false;
+//                                    break;
+//                                }
+//                            }
+//                        }
+//                        else{
+//                            check(tmps);
+//                            break;
+//                        }
+//                    }
+//                    else {
+//                        nflag=check(tmps);
+//                        if(nflag) tmps="";
+//                    }
+//                    //System.out.println("here2"+flag);
+//                }
+//                else if(c==' ' || c=='\n' || c=='\r'){
+//                    match(tmps);
+//                    tmps="";
+//                }
+//                else{
+//                    match(tmps);
+//                    tmps="";
+//                    flag=false;
+//                    break;
+//                }
+//                ls=c;
+//            }
+//            if(!tmps.equals("") && !tmps.equals(":")){
+//                flag=true;
+//                match(tmps);
+//            }
+//            if(!flag) System.out.println("Unknown");
+//        }catch (Exception e) {
+//            e.printStackTrace();
+//        }
         try {
-            r=new InputStreamReader(new FileInputStream(file));
             int tmp;
-            String tmps="";
-            char ls=0;
-            boolean flag=true;
-            boolean nflag=true;
+            r=new InputStreamReader(new FileInputStream(file));
             while((tmp=r.read())!=-1){
-                char c=(char) tmp;
-                if((c>='0' && c<='9') || (c>='a' && c<='z') || (c>='A' && c<='Z') || c==':' || c=='+' || c=='*' || c==',' || c=='(' || c==')'){
-                    if(isInt(tmps) && !isDigital(c)){
-                        print(tmps,1);
-                        tmps=""+c;
-                    }
-                    //System.out.println("here1"+flag);
-                    tmps+=c;
-                    if(c==':'){
-                        if((tmp=r.read())!=-1){
-                            next=(char) tmp;
-                            if(next=='='){
-                                tmps+=next;
-                                check(tmps);
-                                tmps="";
-                            }
-                            else {
-                                check(tmps);
-                                if(ckvalid(next)) tmps=""+next;
-                                else if(next==' ' || next=='\n' || next=='\r') tmps="";
-                                else{
-                                    flag=false;
-                                    break;
-                                }
-                            }
-                        }
-                        else{
-                            check(tmps);
-                            break;
-                        }
-                    }
-                    else {
-                        nflag=check(tmps);
-                        if(nflag) tmps="";
-                    }
-                    //System.out.println("here2"+flag);
-                }
-                else if(c==' ' || c=='\n' || c=='\r'){
-                    match(tmps);
-                    tmps="";
-                }
-                else{
-                    match(tmps);
-                    tmps="";
-                    flag=false;
-                    break;
-                }
-                ls=c;
+                System.out.println((char) tmp);
             }
-            if(!tmps.equals("") && !tmps.equals(":")){
-                flag=true;
-                match(tmps);
-            }
-            if(!flag) System.out.println("Unknown");
-        }catch (Exception e) {
+
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
