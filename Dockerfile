@@ -2,4 +2,4 @@
 FROM openjdk:11
 WORKDIR /app/
 COPY ./* ./
-RUN javac analy.java
+RUN javac opg.java
